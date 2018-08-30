@@ -8,6 +8,11 @@
                         <div class="date">
                             <p>published: {{ post.published_date }}</p>
                         </div>
+                        {% if post.approved_comments.count > 0 %}
+                        <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a>
+                        {% else %}
+                        No comments yet...
+                        {% endif %}
                     </div>
                 {% endfor %}
 {% endblock %}
